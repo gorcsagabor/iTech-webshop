@@ -1,0 +1,25 @@
+<!-- {{termekek | json}} -->
+<div class="row my-2 mt-5">
+  <input [(ngModel)]="keresendo" type="text" placeholder="Keresés" class="form-control">
+</div>
+
+<div class="row">
+    <div *ngFor="let product of termekek|filter:keresendo" class="col-12 col-md-6 col-lg-4 col-xl-3 mt-5 mb-3">
+        <div class="card h-100">
+          <img [src]="product.kepUrl" class="card-img-top" [alt]="product.megnevezes">
+          <div class="card-body">
+            <h5 class="card-title">{{product.megnevezes}}</h5>
+            <p class="card-text">{{product.leiras}}</p>
+          </div>
+          <div class="card-footer">
+            <p class="card-text">{{product.ar}} Ft</p>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">db :</span>
+                <input #db type="number" value="1" min="0" class="form-control">
+                <button (click)="hozzaad(product, db.value)" type="button" class="btn btn-dark">Kosárba</button>
+            </div>
+            <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
+          </div>
+        </div>
+      </div>
+</div>
